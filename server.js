@@ -1,8 +1,20 @@
-const http = require('http');
-const routes = require('./route');
+const express = require('express');
 
-console.log(routes.someText);
+const app = express();
 
-const server = http.createServer(routes.handler);
+app.use();
 
-server.listen(2000);
+app.use('/tambah-produk', (req, res, next) => {
+    res.send('<form action="/produk" method="POST"><input type="text" name="title"><button type="submit">Tambahkan produk</button></form>')
+});
+
+app.use('/produk', (req, res, next) => {
+    console.log(req.body);
+    res.redirect('/');
+});
+
+app.use('/', (req, res, next) => {
+    res.send('<h1>Hello From Express</h1>')
+});
+
+app.listen(2000);

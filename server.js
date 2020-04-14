@@ -1,20 +1,26 @@
+const path = require('path');
+
+
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-app.use();
+app.set('view engine', 'pug');
+app.set('views', 'views');
 
-app.use('/tambah-produk', (req, res, next) => {
-    res.send('<form action="/produk" method="POST"><input type="text" name="title"><button type="submit">Tambahkan produk</button></form>')
-});
+const adminData = require('./rute/admin');
+const shopRoutes = require('./rute/shop');
 
-app.use('/produk', (req, res, next) => {
-    console.log(req.body);
-    res.redirect('/');
-});
 
-app.use('/', (req, res, next) => {
-    res.send('<h1>Hello From Express</h1>')
+app.use(bodyParser.urlencoded({ extended: false }));
+
+console.log(adminData);
+app.use('/admin', adminData.routes);
+app.use(shopRoutes);
+
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'html', 'gaketemu.html'));
 });
 
 app.listen(2000);

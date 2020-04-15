@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 
-const bukaFile = require('../buki/pat');
+const bukaFile = require('../path/pat');
 
 
 const router = express.Router();

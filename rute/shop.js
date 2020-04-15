@@ -3,13 +3,16 @@ const path = require('path');
 const express = require('express');
 
 
-const bukaFile = require('../buki/pat');
+const bukaFile = require('../path/pat');
 const adminData = require('./admin');
 
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
-    res.render('shop');
+    const products = adminData.products;
+    res.render('shop', {
+        prods: products, docTitle: 'shop'
+    });
 });
 
 module.exports = router;

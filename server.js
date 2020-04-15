@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.set('view engine', 'pug');
-app.set('views', 'views');
+app.set('views', 'html');
 
 const adminData = require('./rute/admin');
 const shopRoutes = require('./rute/shop');

@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title #{docTitle}
-    body
-        header
-            nav
-                ul
-                    li
-                        a(href="/") shop
-                    li
-                        a(href="/admin/tambah-produk") Tambahkan Produk
+extends layout/main-layout.pug
+
+block content
+    main
+        if prods.length > 0        
+            .grid
+                each produk in prods
+                    center
+                        article
+                             header
+                                h1 #{produk.title}
+                                    div
+                                        img(src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cnnindonesia.com%2Fgaya-hidup%2F20160518121514-277-131608%2Fmengapa-aroma-buku-tua-begitu-menyenangkan&psig=AOvVaw1kE35gwkgOlRKR1KR8q_yd&ust=1587018201479000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNi8lOzl6egCFQAAAAAdAAAAABAN")
+                                    div
+                                        h2 Rp. 20.000,00
+                                        p Buku merah yang menarik
+                                        button Masukkan ke dalam keranjang
+
+        else
+            h1 Tidak ada Produk 
+        

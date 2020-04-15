@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 
-const bukaFile = require('../path/pat');
+const bukaFile = require('../utility/path');
 
 
 const router = express.Router();
@@ -9,12 +9,13 @@ const router = express.Router();
 const products = [];
 
 router.get('/tambah-produk', (req, res, next) => {
-    res.sendFile(path.join(bukaFile, 'html', 'tambah-produk.html'));
+    res.render('tambah-produk', { pageTitle: 'Tambahkan Produk' });
 });
 
 router.post('/tambah-produk', (req, res, next) => {
-    products.push({ title: req.body.title });
+    products.push({ title: req.body.title, path: '/admin/tambah-produk' });
     res.redirect('/');
+
 });
 
 exports.routes = router;

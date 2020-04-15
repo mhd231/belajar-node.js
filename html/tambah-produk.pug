@@ -1,0 +1,7 @@
+extends layout/main-layout.pug
+
+block content
+            form(action="/admin/tambah-produk", method="POST")
+                label(for="title")
+                input(type="text", name="title")#title
+                button(type="submit") Kirim

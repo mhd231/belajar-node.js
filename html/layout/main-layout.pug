@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title #{pageTitle}  
+    block style
+
+    body
+        header
+            nav
+                ul
+                    li
+                        a(href="/",, class=(path === '/' ? 'active' : '')) shop
+                    li
+                        a(href="/admin/tambah-produk", class=(path === '/admin/tambah-produk' ? 'active' : '')) Tambahkan Produk
+    block content
